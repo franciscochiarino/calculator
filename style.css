@@ -8,11 +8,16 @@
     display: grid;
     grid-template: repeat(6, 1fr) / repeat(4, 1fr);
     width: 100px;
+    gap: 5px;
 }
 
 input {
     width: 100%;
     grid-column: 1 / 5;
+    -moz-appearance:textfield;
+    appearance: none;
+    text-align: right;
+    padding: 5px;
 }
 
 .zero {
