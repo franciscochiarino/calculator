@@ -10,9 +10,10 @@
     width: 100px;
 }
 
-input {
+#display {
     width: 100%;
     grid-column: 1 / 5;
+    text-align: right;
 }
 
 .zero {
