@@ -11,13 +11,17 @@
     gap: 5px;
 }
 
-input {
+.display {
     width: 100%;
     grid-column: 1 / 5;
+<<<<<<< HEAD
     -moz-appearance:textfield;
     appearance: none;
     text-align: right;
     padding: 5px;
+=======
+    text-align: right;
+>>>>>>> afa2cda4a4e594324c55a3c6bfc87e3ecfc777e1
 }
 
 .zero {
