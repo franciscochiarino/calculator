@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll('button');
 const display = document.getElementById('display');
 
-// Functions
+// Calculations
 const sum = (a, b) => a + b;
 const take = (a, b) => a - b;
 const divide = (a, b) => a / b;
@@ -66,14 +66,10 @@ const displayContent = event => {
     if (event.target.innerHTML === '=') {
         runCalculation();
         display.innerHTML = display.innerHTML.substring(0, display.innerHTML.length - 1);
-    }
-        
+    } 
 }
 
-
+// Event listeners
 buttons.forEach(button => button.addEventListener('click', displayContent))
 
 // * You might ask yourself why I didn't use typeof to check if it's a number. That's because if you parseInt an operator, JS will tell you it is a number, and I need to know if there is an operator on a number at the end. 
-
-let string = '5+5';
-console.log(parseFloat(string))
