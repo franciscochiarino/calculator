@@ -13,23 +13,23 @@ const clear = () => display.innerHTML = '';
 
     if (display.innerHTML.includes('+')) {
         let splitedDisplay = display.innerHTML.split('+');
-        let numbers = splitedDisplay.map(n => parseInt(n, 10));
-        display.innerHTML = sum(numbers[0], numbers[1]);
+        let numbers = splitedDisplay.map(n => parseFloat(n));
+        display.innerHTML = sum(numbers[0], numbers[1]) + event.target.innerHTML;
     }
-    if (display.innerHTML.includes('-')) {
+    else if (display.innerHTML.includes('-')) {
         let splitedDisplay = display.innerHTML.split('-');
-        let numbers = splitedDisplay.map(n => parseInt(n, 10));
-        display.innerHTML = take(numbers[0], numbers[1]);
+        let numbers = splitedDisplay.map(n => parseFloat(n));
+        display.innerHTML = take(numbers[0], numbers[1]) + event.target.innerHTML;
     }
-    if (display.innerHTML.includes('/')) {
+    else if (display.innerHTML.includes('/')) {
         let splitedDisplay = display.innerHTML.split('/');
-        let numbers = splitedDisplay.map(n => parseInt(n, 10));
-        display.innerHTML = divide(numbers[0], numbers[1]);
+        let numbers = splitedDisplay.map(n => parseFloat(n));
+        display.innerHTML = divide(numbers[0], numbers[1]) + event.target.innerHTML;
     }
-    if (display.innerHTML.includes('*')) {
+    else if (display.innerHTML.includes('*')) {
         let splitedDisplay = display.innerHTML.split('*');
-        let numbers = splitedDisplay.map(n => parseInt(n, 10));
-        display.innerHTML = multiply(numbers[0], numbers[1]);
+        let numbers = splitedDisplay.map(n => parseFloat(n));
+        display.innerHTML = multiply(numbers[0], numbers[1]) + event.target.innerHTML;
 
     // Else, just display the operator
     } else {
@@ -39,6 +39,9 @@ const clear = () => display.innerHTML = '';
 
 // Display 
 const displayContent = event => {
+
+    // Get last character of display
+    let displayLastCharacter = parseInt(display.innerHTML[display.innerHTML.length - 1], 10);
 
     // Numbers
     if (event.target.className === 'number') {
@@ -53,19 +56,16 @@ const displayContent = event => {
     // Operators
     if (event.target.className === 'operator') {
 
-        // Check if there is a number
-        let displayLastCharacter = parseInt(display.innerHTML[display.innerHTML.length - 1], 10);
-        
+        // Check if last character is a number *
         if (displayLastCharacter >= 0 && displayLastCharacter <= 9) {
-
-            // Function call
             runCalculation();
         }   
     }
 
     // Equal
     if (event.target.innerHTML === '=') {
-        display.innerHTML = runCalculation();
+        runCalculation();
+        display.innerHTML = display.innerHTML.substring(0, display.innerHTML.length - 1);
     }
         
 }
@@ -73,4 +73,7 @@ const displayContent = event => {
 
 buttons.forEach(button => button.addEventListener('click', displayContent))
 
+// * You might ask yourself why I didn't use typeof to check if it's a number. That's because if you parseInt an operator, JS will tell you it is a number, and I need to know if there is an operator on a number at the end. 
 
+let string = '5+5';
+console.log(parseFloat(string))
