@@ -24,7 +24,12 @@ const clear = () => display.innerHTML = '';
     else if (display.innerHTML.includes('/')) {
         let splitedDisplay = display.innerHTML.split('/');
         let numbers = splitedDisplay.map(n => parseFloat(n));
-        display.innerHTML = divide(numbers[0], numbers[1]) + event.target.innerHTML;
+        let result = divide(numbers[0], numbers[1]) 
+        if (result.toString().includes('.')) {
+            display.innerHTML = result.toFixed(2) + event.target.innerHTML;
+        } else {
+            display.innerHTML = result + event.target.innerHTML;
+        }
     }
     else if (display.innerHTML.includes('*')) {
         let splitedDisplay = display.innerHTML.split('*');
