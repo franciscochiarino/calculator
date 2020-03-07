@@ -10,35 +10,36 @@ const clear = () => display.innerHTML = '';
 
  //Check if there already is an operator and run the corresponding function
  const runCalculation = () => {
-
+    let operator = event.target.innerHTML;
+    
     if (display.innerHTML.includes('+')) {
         let splitedDisplay = display.innerHTML.split('+');
         let numbers = splitedDisplay.map(n => parseFloat(n));
-        display.innerHTML = sum(numbers[0], numbers[1]) + event.target.innerHTML;
+        let result = sum(numbers[0], numbers[1]);
+        displayResult(result, operator);
     }
     else if (display.innerHTML.includes('-')) {
         let splitedDisplay = display.innerHTML.split('-');
         let numbers = splitedDisplay.map(n => parseFloat(n));
-        display.innerHTML = take(numbers[0], numbers[1]) + event.target.innerHTML;
+        let result = take(numbers[0], numbers[1]);
+        displayResult(result, operator);
     }
     else if (display.innerHTML.includes('/')) {
         let splitedDisplay = display.innerHTML.split('/');
         let numbers = splitedDisplay.map(n => parseFloat(n));
-        let result = divide(numbers[0], numbers[1]) 
-        if (result.toString().includes('.')) {
-            display.innerHTML = result.toFixed(2) + event.target.innerHTML;
-        } else {
-            display.innerHTML = result + event.target.innerHTML;
-        }
+        let result = divide(numbers[0], numbers[1]);
+        displayResult(result, operator);
+        
     }
     else if (display.innerHTML.includes('*')) {
         let splitedDisplay = display.innerHTML.split('*');
         let numbers = splitedDisplay.map(n => parseFloat(n));
-        display.innerHTML = multiply(numbers[0], numbers[1]) + event.target.innerHTML;
+        let result = multiply(numbers[0], numbers[1]);
+        displayResult(result, operator);
 
     // Else, just display the operator
     } else {
-        display.innerHTML += event.target.innerHTML;
+        display.innerHTML += operator;
     }
 }
 
@@ -72,6 +73,14 @@ const displayContent = event => {
         runCalculation();
         display.innerHTML = display.innerHTML.substring(0, display.innerHTML.length - 1);
     } 
+}
+
+const displayResult = (result, operator) => {
+    if (result.toString().includes('.')) {
+        display.innerHTML = result.toFixed(2) + operator;
+    } else {
+        display.innerHTML = result + operator;
+    }
 }
 
 // Event listeners
