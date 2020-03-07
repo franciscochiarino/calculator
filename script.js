@@ -57,6 +57,11 @@ const displayContent = event => {
     }
 
     // Clear
+    if (event.target.innerHTML === 'E') {
+        display.innerHTML += '2.71';
+    }
+
+    // Clear
     if (event.target.innerHTML === 'C') {
         display.innerHTML = '';
     }
@@ -77,7 +82,9 @@ const displayContent = event => {
     } 
 }
 
+// Display Result
 const displayResult = (result, operator) => {
+
     if (result.toString().includes('.')) {
         display.innerHTML = result.toFixed(2) + operator;
     } else {
