@@ -18,27 +18,29 @@ const clear = () => display.innerHTML = '';
         let result = sum(numbers[0], numbers[1]);
         displayResult(result, operator);
     }
+
     else if (display.innerHTML.includes('-')) {
         let splitedDisplay = display.innerHTML.split('-');
         let numbers = splitedDisplay.map(n => parseFloat(n));
         let result = take(numbers[0], numbers[1]);
         displayResult(result, operator);
     }
+
     else if (display.innerHTML.includes('/')) {
         let splitedDisplay = display.innerHTML.split('/');
         let numbers = splitedDisplay.map(n => parseFloat(n));
         let result = divide(numbers[0], numbers[1]);
         displayResult(result, operator);
-        
     }
+
     else if (display.innerHTML.includes('*')) {
         let splitedDisplay = display.innerHTML.split('*');
         let numbers = splitedDisplay.map(n => parseFloat(n));
         let result = multiply(numbers[0], numbers[1]);
         displayResult(result, operator);
-
-    // Else, just display the operator
-    } else {
+    }
+    
+    else {
         display.innerHTML += operator;
     }
 }
