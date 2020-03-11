@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 main {
     border: 1px solid black;
     width: calc(53px * 4);
@@ -24,6 +31,7 @@ main {
 button {
     background-color: #fff;
     border: 1px solid black;
+    border-radius: 3px;
     box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.75); /* USE VARIABLE*/
 }
 
